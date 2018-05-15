@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Anton Kartsev <anton@alarm.ru>
@@ -6,7 +7,6 @@ declare(strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 
 namespace Bigperson\AmoCrmApi;
 
@@ -25,18 +25,15 @@ use linkprofit\AmoCRM\services\PipelineService;
 use linkprofit\AmoCRM\services\TaskService;
 use linkprofit\AmoCRM\services\TaskTypeService;
 
-
 /**
- * Class AmoCrmApiServiceProvider
- *
- * @package Bigperson\AmoCrmApi
+ * Class AmoCrmApiServiceProvider.
  */
 class AmoCrmApiServiceProvider extends ServiceProvider
 {
     /**
-     * Local config file path
+     * Local config file path.
      */
-    private const CONFIG_PATH = __DIR__ . '/../config/amocrm-api.php';
+    private const CONFIG_PATH = __DIR__.'/../config/amocrm-api.php';
 
     /**
      * @var array List of services
@@ -56,7 +53,6 @@ class AmoCrmApiServiceProvider extends ServiceProvider
         TaskTypeService::class,
     ];
 
-
     /**
      * Bootstrap the application services.
      *
@@ -67,6 +63,7 @@ class AmoCrmApiServiceProvider extends ServiceProvider
         $this->bootRequestHandler();
         $this->bootServices();
     }
+
     /**
      * Register the application services.
      *
