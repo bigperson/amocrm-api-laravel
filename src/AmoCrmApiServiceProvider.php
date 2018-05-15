@@ -31,7 +31,7 @@ use linkprofit\AmoCRM\services\TaskTypeService;
  *
  * @package Bigperson\AmoCrmApi
  */
-class AmoCrmApiServiceProvider  extends ServiceProvider
+class AmoCrmApiServiceProvider extends ServiceProvider
 {
     /**
      * Local config file path
