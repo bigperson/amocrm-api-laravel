@@ -9,7 +9,7 @@
 [![StyleCI](https://styleci.io/repos/133466152/shield?branch=master)](https://styleci.io/repos/133466152)
 
 # Описание
-Данный пакет это ServiceProvider для Laravel 5 предоставляющие интеграцию с API amoCRM используя библиотеку [linkprofit-cpa/amocrm-api](https://github.com/linkprofit-cpa/amocrm-api). Пакте позволяет зарегистрировать все сервисы из рожительской библиотеки для использования их при DI, без необходимости создавать каждый раз RequestHandler.
+Данный пакет это ServiceProvider для Laravel 5 предоставляющий интеграцию с API amoCRM используя библиотеку [linkprofit-cpa/amocrm-api](https://github.com/linkprofit-cpa/amocrm-api). Пакет позволяет зарегистрировать все сервисы из родительской библиотеки для использования сервисов через DI, без необходимости создавать каждый раз RequestHandler.
 
 ## Установка
 
