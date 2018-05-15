@@ -1,6 +1,12 @@
 # AmoCRM API Laravel Bridge
 ![amoCRM](https://raw.githubusercontent.com/bigperson/amocrm-api-laravel/master/assets/logo.png)
 
+[![Latest Stable Version](https://poser.pugx.org/bigperson/amocrm-api-laravel/v/stable)](https://packagist.org/packages/bigperson/amocrm-api-laravel)
+[![Build Status](https://travis-ci.org/bigperson/amocrm-api-laravel.svg?branch=master)](https://travis-ci.org/bigperson/amocrm-api-laravel)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bigperson/amocrm-api-laravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bigperson/amocrm-api-laravel/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/bigperson/amocrm-api-laravel/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bigperson/amocrm-api-laravel/?branch=master)
+[![License](https://poser.pugx.org/bigperson/amocrm-api-laravel/license)](https://packagist.org/packages/bigperson/amocrm-api-laravel)
+
 # Описание
 Данный пакет это ServiceProvider для Laravel 5 предоставляющие интеграцию с API amoCRM используя библиотеку [linkprofit-cpa/amocrm-api](https://github.com/linkprofit-cpa/amocrm-api). Пакте позволяет зарегистрировать все сервисы из рожительской библиотеки для использования их при DI, без необходимости создавать каждый раз RequestHandler.
 
