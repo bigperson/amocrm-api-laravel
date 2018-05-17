@@ -30,6 +30,9 @@ use linkprofit\AmoCRM\services\TaskTypeService;
  */
 class AmoCrmApiServiceProvider extends ServiceProvider
 {
+
+    protected $defer = true;
+
     /**
      * Local config file path.
      */
@@ -60,8 +63,8 @@ class AmoCrmApiServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->bootRequestHandler();
-        $this->bootServices();
+        $this->shareResources();
+        $this->mergeConfigFrom(self::CONFIG_PATH, 'amocrm-api');
     }
 
     /**
@@ -71,8 +74,9 @@ class AmoCrmApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->shareResources();
-        $this->mergeConfigFrom(self::CONFIG_PATH, 'amocrm-api');
+        $this->registerRequestHandler();
+        $this->registerAuthorizationService();
+        $this->registerServices();
     }
 
     /**
@@ -87,13 +91,25 @@ class AmoCrmApiServiceProvider extends ServiceProvider
     }
 
     /**
-     * @return void Boot Request Handler
+     * @return void Register Request Handler
      */
-    private function bootRequestHandler()
+    private function registerRequestHandler()
     {
         $this->app->singleton(RequestHandler::class, function ($app) {
             $request = new \linkprofit\AmoCRM\RequestHandler();
             $request->setSubdomain(config('amocrm.domain'));
+
+            return $request;
+        });
+    }
+
+    /**
+     * @return void Register and authorize Authorization Service
+     */
+    private function registerAuthorizationService()
+    {
+        $this->app->singleton(AuthorizationService::class, function ($app) {
+            $request = $app->make(RequestHandler::class);
             $connection = new \linkprofit\AmoCRM\entities\Authorization(
                 config('amocrm-api.login'),
                 config('amocrm-api.hash')
@@ -102,22 +118,33 @@ class AmoCrmApiServiceProvider extends ServiceProvider
             $authorization->add($connection);
             $authorization->authorize();
 
-            return $request;
+            return $authorization;
         });
     }
 
     /**
      * @return void Boot all services
      */
-    private function bootServices()
+    private function registerServices()
     {
         foreach ($this->services as $service) {
-            $this->app->singleton($service, function ($app) use ($service) {
+            $this->app->bind($service, function ($app) use ($service) {
                 $request = $app->make(\linkprofit\AmoCRM\RequestHandler::class);
+                $authorization = $app->make(AuthorizationService::class);
                 $service = new $service($request);
 
                 return $service;
             });
         }
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [RequestHandler::class];
     }
 }
