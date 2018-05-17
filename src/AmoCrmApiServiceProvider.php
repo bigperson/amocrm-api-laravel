@@ -115,7 +115,9 @@ class AmoCrmApiServiceProvider extends ServiceProvider
             );
             $authorization = new \linkprofit\AmoCRM\services\AuthorizationService($request);
             $authorization->add($connection);
-            $authorization->authorize();
+            if ($this->app->environment() !== 'testing') {
+                $authorization->authorize();
+            }
 
             return $authorization;
         });
