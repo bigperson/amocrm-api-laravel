@@ -30,7 +30,6 @@ use linkprofit\AmoCRM\services\TaskTypeService;
  */
 class AmoCrmApiServiceProvider extends ServiceProvider
 {
-
     protected $defer = true;
 
     /**
