@@ -96,7 +96,7 @@ class AmoCrmApiServiceProvider extends ServiceProvider
     {
         $this->app->singleton(RequestHandler::class, function ($app) {
             $request = new \linkprofit\AmoCRM\RequestHandler();
-            $request->setSubdomain(config('amocrm.domain'));
+            $request->setSubdomain(config('amocrm-api.domain'));
 
             return $request;
         });
