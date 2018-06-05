@@ -3,7 +3,7 @@
     "description": "An AmoCRM api bridge for Laravel 5",
     "type": "library",
     "require": {
-        "linkprofit-cpa/amocrm-api": "^0.6.0"
+        "linkprofit-cpa/amocrm-api": "^0.7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.1"
